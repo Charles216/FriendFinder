@@ -1,10 +1,12 @@
-const friends = [];
 
-app.post("/api/friends", function (req, res) {
-    const friend = req.body;
+module.exports = function(app) {
+
+    app.post("/api/friends", function (req, res) {
+        console.log(req);
     
-    friends.push(friend);
+    
+    // friends.push(friend);
 
-    res.json(friend);
-});
-
+    // res.json(friend);
+})
+}

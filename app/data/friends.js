@@ -1,3 +1,4 @@
+module.exports = function(app) {
 [
     {
     "name": "Ahmed",
@@ -320,3 +321,4 @@
     ]
     }
     ]
+}

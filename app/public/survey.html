@@ -28,7 +28,7 @@
 
             <h3>Question 1</h3>
             <p>Your mind is always buzzing with unexplored ideas and plans.</p>
-            <select class='score'>
+            <select class='score0'>
                 <option value='none'>Please Select Answer</option>
                 <option value="one">1 (Strongly Disagree)</option>
                 <option value="two">2</option>
@@ -36,10 +36,10 @@
                 <option value="four">4</option>
                 <option value='five'>5 (Strongly Agree)</option>
             </select>
-            
+
             <h3>Question 2</h3>
             <p>Generally speaking, you rely more on your experience than your imagination.</p>
-            <select class='score'>
+            <select class='score1'>
                 <option value='none'>Please Select Answer</option>
                 <option value="one">1 (Strongly Disagree)</option>
                 <option value="two">2</option>
@@ -47,10 +47,10 @@
                 <option value="four">4</option>
                 <option value='five'>5 (Strongly Agree)</option>
             </select>
-            
+
             <h3>Question 3</h3>
             <p>You find it easy to stay relaxed and focused even when there is some pressure.</p>
-            <select class='score'>
+            <select class='score2'>
                 <option value='none'>Please Select Answer</option>
                 <option value="one">1 (Strongly Disagree)</option>
                 <option value="two">2</option>
@@ -58,10 +58,10 @@
                 <option value="four">4</option>
                 <option value='five'>5 (Strongly Agree)</option>
             </select>
-            
+
             <h3>Question 4</h3>
             <p>You rarely do something just out of sheer curiosity.</p>
-            <select class='score'>
+            <select class='score3'>
                 <option value='none'>Please Select Answer</option>
                 <option value="one">1 (Strongly Disagree)</option>
                 <option value="two">2</option>
@@ -69,7 +69,7 @@
                 <option value="four">4</option>
                 <option value='five'>5 (Strongly Agree)</option>
             </select>
-            
+
             <h3>Question 5</h3>
             <p>People can rarely upset you.</p>
             <select class='score'>
@@ -80,7 +80,7 @@
                 <option value="four">4</option>
                 <option value='five'>5 (Strongly Agree)</option>
             </select>
-            
+
             <h3>Question 6</h3>
             <p>It is often difficult for you to relate to other people’s feelings.</p>
             <select class='score'>
@@ -91,7 +91,7 @@
                 <option value="four">4</option>
                 <option value='five'>5 (Strongly Agree)</option>
             </select>
-            
+
             <h3>Question 7</h3>
             <p>In a discussion, truth should be more important than people’s sensitivities.</p>
             <select class='score'>
@@ -102,7 +102,7 @@
                 <option value="four">4</option>
                 <option value='five'>5 (Strongly Agree)</option>
             </select>
-            
+
             <h3>Question 8</h3>
             <p>You rarely get carried away by fantasies and ideas.</p>
             <select class='score'>
@@ -113,7 +113,7 @@
                 <option value="four">4</option>
                 <option value='five'>5 (Strongly Agree)</option>
             </select>
-            
+
             <h3>Question 9</h3>
             <p>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.
             </p>
@@ -152,22 +152,25 @@
         crossorigin='anonymous'></script>
 
     <script>
+        $(document).ready(function () {
+            $("#submit").on("click", function (event) {
 
-        $("#submit").on("click", function (event) {
-            event.preventDefault();
+                var friend = {
+                    name: $("#nameInput").val(),
+                    photo: $("#photoInput").val(),
+                    //scores: [$(".score0").val()]
 
-            $.ajax({
-                method: "POST",
-                url: "/api/friends",
-                data: {
-                    "name": $("#nameInput").val(),
-                    "photo": $("#photoInput").val(),
-                    // "scores": $(".score???").val(), What are we doing here?
 
-                }
-            }).then(function (data) {
-                $("ul#tables").append(`<li>${data.customerName}</li>`);
-            });
+                };
+
+                $.post('/api/friends', friend, function (data) {
+
+                })
+
+
+
+            })
+
         })
 
     </script>
