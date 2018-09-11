@@ -1,12 +1,14 @@
-
-module.exports = function(app) {
+var friends = [];
+module.exports = function (app) {
 
     app.post("/api/friends", function (req, res) {
-        console.log(req.body);
-    
-    
-    // friends.push(friend);
+        var friendData = req.body;
+        //console.log(req.body);
+        friends.push(friendData);
 
-    // res.json(friend);
-})
+    })
+    app.get("/api/friends", function (req, res) {
+        
+        res.json(friends);
+    })
 }
