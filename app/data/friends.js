@@ -1,5 +1,6 @@
-module.exports = function(app) {
-[
+module.exports = 
+
+    [
     {
     "name": "Ahmed",
     "photo": "https://randomuser.me/api/portraits/men/66.jpg",
@@ -321,4 +322,3 @@ module.exports = function(app) {
     ]
     }
     ]
-}
