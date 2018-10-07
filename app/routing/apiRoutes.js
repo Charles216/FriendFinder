@@ -1,38 +1,50 @@
-var friends = require("../data/friends.js");
+const friends = require("../data/friends.js");
 //console.log(friends);
-module.exports = function (app) {
 
-    // Access to front and back end here...
-    //=====================================
-    app.post("/api/friends", function (req, res) {
-        var userData = req.body;
-        //console.log(req.body);
+module.exports = function(app) {
+  // Access to front and back end here...
+  //=====================================
+  app.get("/api/friends", function(req, res) {
+    res.json(friends);
+  });
+  // Use new obj to hold "best match" - loop through options
+  app.post("/api/friends", function(req, res) {
+    const bestMatch = {
+      name: "",
+      photo: "",
+      friendDifference: Infinity
+    };
+    // Take result of user's survey POST and parse it
+    const userData = req.body;
+    const userScores = userData.scores;
+    let totalDifference;
 
-        var leastDiff = 40;
-        var totalDiff = 0;
-        var bestFriendIndex;
+    // Loop through all friend possibilities from database
+    for (var i = 0; i < friends.length; i++) {
+      let currentFriend = friends[i];
+      totalDifference = 0;
+      console.log(currentFriend.name);
 
-        for (var i = 0; i < friends.length; i++) {
-            for (var j = 0; j < friends[i].scores.length; j++) {
-                var difference = Math.abs(req.body.scores[j] - friends[i].scores[j]);
-                totalDiff += difference;
+      // Loop through scores from each friend
+      for (var j = 0; j < currentFriend.length; j++) {
+        let currentFriendScore = currentFriend.scores[j];
+        let currentUserScore = userScores[j];
 
-                if (totalDiff < leastDiff) {
-                    leastDiff = totalDiff;
-                    bestFriendIndex = i;
-                    //console.log(leastDiff);
-                    //console.log(bestFriendIndex);
-                }
-            }
-        }
+        // Calculate diff between scores and sum them into totalDifference
+        totalDifference += Math.abs(
+          parseInt(currentUserScore) - parseInt(currentFriendScore)
+        );
+      }
+      // If sum of diff is less then the diff of current "best match"
+      if (totalDifference <= bestMatch.friendDifference) {
+        // Reset the bestMatch to be the new friend
+        bestMatch.name = currentFriend.name;
+        bestMatch.photo = currentFriend.photo;
+        bestMatch.friendDifference = totalDifference;
+      }
+    }
 
-        friends.push(userData);
-        res.json(friends[bestFriendIndex]);
-
-    })
-
-    app.get("/api/friends", function (req, res) {
-
-        res.json(friends);
-    })
-}
+    friends.push(userData);
+    res.json(bestMatch);
+  });
+};
