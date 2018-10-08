@@ -1,0 +1,39 @@
+body {
+  background-image: url("../img/surveyBkgrd.jpeg");
+  background-position: center center;
+  background-size: cover;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.container {
+  background-color: rgba(128, 128, 128, 0.767);
+  text-align: center;
+  width: 65%;
+}
+
+h1 {
+  padding: 15px;
+  text-decoration: underline;
+}
+
+#title {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.footer {
+  background-color: transparent;
+  position: absolute;
+}
+
+hr {
+  background-color: white;
+}
+.btn {
+  margin: 5px;
+}
+
+.row {
+  margin-left: 10px;
+}

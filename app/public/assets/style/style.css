@@ -1,0 +1,28 @@
+body {
+  background-image: url("../img/background.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.jumbotron {
+  margin-top: 70px;
+  background-color: transparent;
+  color: white;
+}
+
+h1 span,
+h4 span {
+  background-color: rgba(128, 128, 128, 0.904);
+}
+
+.btn {
+  border: rgba(128, 128, 128, 0.664) 2px solid;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
