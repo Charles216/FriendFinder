@@ -23,7 +23,7 @@ Once the user completes the form in it's entirity. The information is compared a
 
 Once a match has been determined, a modal card pops up with the photo and name of the best match for the current user! 
 
-**photo of modal to come
+![](readmeImages/modal.png)
 
 ## Technologies used
 
